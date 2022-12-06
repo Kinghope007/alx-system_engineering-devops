@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type f -empty | find . -type d -empty | ls -l
+find . -empty |cut -d '/' -f 1 | ls -l
