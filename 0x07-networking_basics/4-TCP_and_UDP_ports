@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+echo "Active Internet connections (only servers)"
+echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
+
+# Check if netstat is available
+if command -v netstat &> /dev/null; then
+    # Display listening sockets with PID and program name
+    netstat -tulpn | awk '$6 == "LISTEN" {print}'
+else
+    echo "Error: netstat command not found. Please make sure it is installed."
+fi
+
+echo "Active UNIX domain sockets (only servers)"
+echo "Proto RefCnt Flags       Type       State         I-Node   PID/Program name    Path"
+
+# Display UNIX domain sockets with PID and program name
+netstat -lx | awk '$1 ~ /^(unix|Unix)/ && $6 == "LISTEN" {print}'
+
