@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Display UNIX domain sockets with PID
 
 echo "Active Internet connections (only servers)"
 echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
