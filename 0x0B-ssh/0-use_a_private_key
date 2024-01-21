@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Script to connect to a server using SSH with private key
+
+ssh -i ~/.ssh/school -o "PasswordAuthentication no" ubuntu@54.210.52.229
