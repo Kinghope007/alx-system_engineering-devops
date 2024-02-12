@@ -1,0 +1,19 @@
+# Setup ufw firewall rules on web-01
+
+## Install ufw
+sudo apt-get update
+sudo apt-get install -y ufw
+
+## Enable ufw
+sudo ufw enable
+
+## Allow SSH, HTTPS, and HTTP
+sudo ufw allow 22/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 80/tcp
+
+## Block all other incoming traffic
+sudo ufw deny in from any to any
+
+## Verify rules
+sudo ufw status verbose
