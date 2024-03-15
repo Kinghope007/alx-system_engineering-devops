@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Searching for Gunicorn master process..."
+master_pid=$(pgrep -f "gunicorn.*--workers")
+
+if [ -z "$master_pid" ]; then
+    echo "No Gunicorn master process found."
+    exit 1
+fi
+
+echo "Found Gunicorn master process with PID: $master_pid"
+
+# Gracefully reload Gunicorn by sending a HUP signal to the master process
+kill -HUP "$master_pid"
+
+echo "Gunicorn gracefully reloaded."
